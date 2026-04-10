@@ -8,52 +8,52 @@
         :root { --red: #cc0000; --fb-blue: #385898; --fb-bg: #f0f2f5; --text: #1c1e21; }
         body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f0f2f5; margin: 0; color: var(--text); line-height: 1.5; }
         
-        /* 1. 顶部 Health 导航 */
         .health-header { background: #fff; border-bottom: 2px solid var(--red); padding: 12px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
         .health-logo { font-size: 24px; font-weight: 900; color: #000; letter-spacing: -1px; }
         .health-logo span { background: var(--red); color: #fff; padding: 1px 6px; border-radius: 3px; margin-right: 5px; }
         .nav-links { display: flex; gap: 20px; font-weight: bold; font-size: 14px; text-transform: uppercase; color: #333; }
 
-        /* 2. 红色通栏 */
         .top-alert { background: var(--red); color: #fff; text-align: center; padding: 10px; font-size: 13px; font-weight: bold; }
 
         .wrapper { max-width: 850px; margin: 20px auto; background: #fff; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
         .article-content { padding: 35px; }
         
-        /* 指定标题与文案样式 */
         h1.main-headline { font-size: 32px; line-height: 1.2; text-align: center; margin-bottom: 20px; color: #000; text-transform: uppercase; }
         .sub-text { font-size: 18px; line-height: 1.5; color: #444; text-align: center; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
 
-        /* 3. 视频与常驻信任图标 */
         .video-box { background: #000; position: relative; border: 5px solid #000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         .trust-badges-fixed { text-align: center; padding: 20px 0; background: #fff; }
         .trust-badges-fixed img { max-width: 100%; height: auto; display: inline-block; }
 
-        /* 4. 动态弹出区域 (默认隐藏) */
         #order-area { display: none; margin-top: 30px; border: 3px dashed var(--red); background: #fff9f9; padding: 40px 20px; text-align: center; }
         .cta-btn { display: inline-block; background: #ff9900; color: #fff; padding: 22px 50px; font-size: 28px; font-weight: bold; text-decoration: none; border-radius: 10px; box-shadow: 0 6px 0 #cc7a00; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.05);} 100% {transform: scale(1);} }
 
-        /* 5. 纯净评论区 (移除互动栏) */
+        /* 评论区样式 */
         .comment-wrap { margin-top: 50px; border-top: 1px solid #ddd; padding-top: 30px; }
         .comment-title { font-weight: bold; font-size: 16px; margin-bottom: 25px; color: #4b4f56; }
         
         .fb-item { display: flex; gap: 12px; margin-bottom: 20px; }
-        .fb-item img { width: 48px; height: 48px; border-radius: 4px; }
-        .fb-bubble { background: var(--fb-bg); padding: 12px 18px; border-radius: 18px; flex: 1; }
+        .fb-item img { width: 48px; height: 48px; border-radius: 4px; flex-shrink: 0; }
+        .fb-bubble { background: var(--fb-bg); padding: 12px 18px; border-radius: 18px; flex: 1; position: relative; }
         .fb-user { font-weight: bold; color: var(--fb-blue); font-size: 13px; margin-bottom: 4px; }
         .fb-msg { font-size: 14px; color: #1c1e21; line-height: 1.4; }
+        
+        /* 模拟点赞数 */
+        .like-count { position: absolute; bottom: -10px; right: 10px; background: #fff; padding: 2px 6px; border-radius: 10px; font-size: 11px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 3px; }
 
-        .fb-reply-box { margin-left: 60px; margin-top: -10px; border-left: 2px solid #ddd; padding-left: 15px; margin-bottom: 20px; }
+        .fb-reply-box { margin-left: 60px; margin-top: -5px; border-left: 2px solid #ddd; padding-left: 15px; margin-bottom: 25px; }
+
+        .lock-comment { text-align: center; padding: 20px; color: #999; font-size: 13px; font-style: italic; border-top: 1px solid #eee; margin-top: 30px; }
 
         footer { text-align: center; padding: 60px 20px; font-size: 12px; color: #999; background: #fff; border-top: 1px solid #eee; }
 
         @media (max-width: 600px) {
             .nav-links { display: none; }
             .article-content { padding: 15px; }
-            h1.main-headline { font-size: 24px; }
-            .sub-text { font-size: 16px; }
+            h1.main-headline { font-size: 22px; }
+            .fb-reply-box { margin-left: 30px; }
         }
     </style>
 </head>
@@ -62,9 +62,7 @@
 <nav class="health-header">
     <div class="nav-container">
         <div class="health-logo"><span>H</span>HEALTH REPORTS</div>
-        <div class="nav-links">
-            <span>Health</span><span>News</span><span>Research</span><span>Contact</span>
-        </div>
+        <div class="nav-links"><span>Health</span><span>News</span><span>Research</span><span>Contact</span></div>
     </div>
 </nav>
 
@@ -101,92 +99,135 @@
         </div>
 
         <div class="comment-wrap">
-            <div class="comment-title">2,485 Comments</div>
+            <div class="comment-title">9,137 Comments</div>
 
             <div class="fb-item">
                 <img src="u1.jpg">
                 <div class="fb-bubble">
-                    <div class="fb-user">Robert Carlson</div>
-                    <div class="fb-msg">I've been using this simple trick for 2 weeks. The change is night and day. Dr. Sandra Lee is a lifesaver.</div>
+                    <div class="fb-user">Michael Thompson</div>
+                    <div class="fb-msg">This is a somewhat controversial issue, but I think it's worth looking into to better understand how to effectively treat the prostate.</div>
+                    <div class="like-count">👍 54</div>
                 </div>
             </div>
 
             <div class="fb-item">
                 <img src="u2.jpg">
                 <div class="fb-bubble">
-                    <div class="fb-user">Michael Thompson</div>
-                    <div class="fb-msg">Is the 6-bottle bundle still available with the discount? My doctor recommended this herbal ritual.</div>
+                    <div class="fb-user">Jason Miller</div>
+                    <div class="fb-msg">I just started watching, and this video has already given me a new perspective on my problem.</div>
+                    <div class="like-count">👍 67</div>
                 </div>
             </div>
-            
-            <div class="fb-reply-box">
-                <div class="fb-item">
-                    <img src="u3.jpg">
-                    <div class="fb-bubble">
-                        <div class="fb-user">Health Support Team</div>
-                        <div class="fb-msg">Yes Michael, as long as the video is still accessible, the exclusive discount remains active.</div>
-                    </div>
+
+            <div class="fb-item">
+                <img src="u3.jpg">
+                <div class="fb-bubble">
+                    <div class="fb-user">Megan Carter</div>
+                    <div class="fb-msg">I think my husband could really benefit from this. I’ll go ahead and order it. Thank you so much!</div>
+                    <div class="like-count">👍 89</div>
                 </div>
             </div>
 
             <div class="fb-item">
                 <img src="u4.jpg">
                 <div class="fb-bubble">
-                    <div class="fb-user">Steven Jenkins</div>
-                    <div class="fb-msg">Glad I watched this until the end. The explanation about the prostate was a real eye-opener.</div>
+                    <div class="fb-user">Brian Reynolds</div>
+                    <div class="fb-msg">I don't think the video editing was particularly good... but I completely understand! I believe everything they say about men's health.</div>
+                    <div class="like-count">👍 42</div>
                 </div>
             </div>
 
             <div class="fb-item">
                 <img src="u5.jpg">
                 <div class="fb-bubble">
-                    <div class="fb-user">Jason M.</div>
-                    <div class="fb-msg">Shipping was very fast. Already started my first teaspoon this morning.</div>
+                    <div class="fb-user">Sarah Bennett</div>
+                    <div class="fb-msg">My husband loves extreme sports—hiking, mountaineering, rafting, and paintball... One of these adventures didn't end very well. He caught a cold and quickly developed prostatitis. The doctor advised him: “Watch this video and you'll understand everything.” It helped him get rid of prostatitis and completely restore his sexual function. He returned to sports and even added paragliding to his list of hobbies. He says it's better to start early than to wait until illness and panic set in.</div>
+                    <div class="like-count">👍 63</div>
                 </div>
             </div>
+
+            <div class="fb-item">
+                <img src="u6.jpg">
+                <div class="fb-bubble">
+                    <div class="fb-user">Emily Parker</div>
+                    <div class="fb-msg">Does it really help?</div>
+                </div>
+            </div>
+            <div class="fb-reply-box">
+                <div class="fb-item">
+                    <img src="u7.jpg">
+                    <div class="fb-bubble">
+                        <div class="fb-user">Erin Collins</div>
+                        <div class="fb-msg">Yes, @Emily, it really works. My husband is living proof... He tried everything, and this method finally helped him. We are so happy. I share this video every day.</div>
+                        <div class="like-count">👍 77</div>
+                    </div>
+                </div>
+                <div class="fb-item" style="margin-top:10px;">
+                    <img src="u8.jpg" style="width:32px; height:32px;">
+                    <div class="fb-bubble" style="padding: 8px 15px;">
+                        <div class="fb-user">Tyler Brooks</div>
+                        <div class="fb-msg">Amazing @Erin!</div>
+                        <div class="like-count">👍 48</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fb-item">
+                <img src="u9.jpg">
+                <div class="fb-bubble">
+                    <div class="fb-user">Anthony Rivera</div>
+                    <div class="fb-msg">I had never heard of this before, it seemed strange, but it actually makes a lot of sense... I started doing it and noticed a difference after just a few days!</div>
+                    <div class="like-count">👍 53</div>
+                </div>
+            </div>
+
+            <div class="fb-item">
+                <img src="u10.jpg">
+                <div class="fb-bubble">
+                    <div class="fb-user">Richard Collins</div>
+                    <div class="fb-msg">Great advice—better a natural remedy than surgery.</div>
+                    <div class="like-count">👍 61</div>
+                </div>
+            </div>
+
+            <div class="fb-item">
+                <img src="u11.jpg">
+                <div class="fb-bubble">
+                    <div class="fb-user">Grace Mitchell</div>
+                    <div class="fb-msg">My husband also refused to have a prostate massage... But now it doesn't matter. The formula really does contain plant-based ingredients and vitamins that are essential for men. He is happy and no longer feels any discomfort.</div>
+                    <div class="like-count">👍 88</div>
+                </div>
+            </div>
+
+            <div class="lock-comment">It is no longer possible to comment on this post!</div>
         </div>
     </div>
 </div>
 
 <footer>
     <p>© 2026 Health Reports. All Rights Reserved.</p>
-    <p>Privacy Policy | Terms of Service | Contact Us</p>
-    <p style="margin-top:25px; opacity:0.6; padding: 0 20px;">
-        This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.<br>
-        *Statements on this website have not been evaluated by the Food and Drug Administration.
-    </p>
+    <p>Privacy Policy | Terms | Contact Us</p>
+    <p style="margin-top:25px; opacity:0.5;">Not affiliated with Facebook, Inc. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
 </footer>
 
 <script>
-    // 1. 动态日期
     const now = new Date();
     const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
     document.getElementById("current-date").innerText = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
 
-    // 2. 地理位置
-    fetch('https://ipapi.co/json/')
-        .then(res => res.json())
-        .then(data => {
-            const locStr = (data.city && data.region) ? `${data.city}, ${data.region}` : "YOUR AREA";
-            document.querySelectorAll('.loc-text').forEach(el => el.innerText = locStr.toUpperCase());
-        });
-
-    // 3. Vturb 监听
-    function showOrder() {
-        const area = document.getElementById('order-area');
-        if (area.style.display !== 'block') {
-            area.style.display = 'block';
-            area.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
+    fetch('https://ipapi.co/json/').then(res => res.json()).then(data => {
+        const loc = (data.city && data.region) ? `${data.city}, ${data.region}` : "YOUR AREA";
+        document.querySelectorAll('.loc-text').forEach(el => el.innerText = loc.toUpperCase());
+    });
 
     window.addEventListener("message", function(e) {
         if (e.data.type === "video_progress" && e.data.percent > 70) {
-            showOrder();
+            const area = document.getElementById('order-area');
+            area.style.display = 'block';
+            area.scrollIntoView({ behavior: 'smooth' });
         }
     });
 
-    // 4. URL追踪
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('fbclid')) {
         const link = document.querySelector('.cta-btn');
