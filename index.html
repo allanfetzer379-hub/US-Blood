@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Report: Exclusive Health Update</title>
+    <style>
+        :root { --red: #cc0000; --fb-blue: #385898; --fb-bg: #f0f2f5; --text: #1c1e21; }
+        body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f0f2f5; margin: 0; color: var(--text); line-height: 1.5; }
+        
+        /* 1. 顶部 Health 导航 */
+        .health-header { background: #fff; border-bottom: 2px solid var(--red); padding: 12px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
+        .health-logo { font-size: 24px; font-weight: 900; color: #000; letter-spacing: -1px; }
+        .health-logo span { background: var(--red); color: #fff; padding: 1px 6px; border-radius: 3px; margin-right: 5px; }
+        .nav-links { display: flex; gap: 20px; font-weight: bold; font-size: 14px; text-transform: uppercase; color: #333; }
+
+        /* 2. 红色通栏 */
+        .top-alert { background: var(--red); color: #fff; text-align: center; padding: 10px; font-size: 13px; font-weight: bold; }
+
+        .wrapper { max-width: 850px; margin: 20px auto; background: #fff; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        .article-content { padding: 35px; }
+        
+        /* 指定文案样式 */
+        h1.main-headline { font-size: 32px; line-height: 1.2; text-align: center; margin-bottom: 20px; color: #000; text-transform: uppercase; }
+        .sub-text { font-size: 18px; line-height: 1.5; color: #444; text-align: center; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+
+        /* 3. 视频与常驻信任图标 */
+        .video-box { background: #000; position: relative; border: 5px solid #000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .trust-badges-fixed { text-align: center; padding: 20px 0; background: #fff; }
+        .trust-badges-fixed img { max-width: 100%; height: auto; display: inline-block; }
+
+        /* 4. 动态弹出区域 */
+        #order-area { display: none; margin-top: 30px; border: 3px dashed var(--red); background: #fff9f9; padding: 40px 20px; text-align: center; }
+        .cta-btn { display: inline-block; background: #ff9900; color: #fff; padding: 22px 50px; font-size: 28px; font-weight: bold; text-decoration: none; border-radius: 10px; box-shadow: 0 6px 0 #cc7a00; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.05);} 100% {transform: scale(1);} }
+
+        /* 5. 纯净评论区 (移除 meta 和 footer) */
+        .comment-wrap { margin-top: 50px; border-top: 1px solid #ddd; padding-top: 30px; }
+        .comment-title { font-weight: bold; font-size: 16px; margin-bottom: 25px; color: #4b4f56; }
+        
+        .fb-item { display: flex; gap: 12px; margin-bottom: 20px; }
+        .fb-item img { width: 48px; height: 48px; border-radius: 4px; }
+        .fb-bubble { background: var(--fb-bg); padding: 12px 18px; border-radius: 18px; flex: 1; }
+        .fb-user { font-weight: bold; color: var(--fb-blue); font-size: 13px; margin-bottom: 4px; }
+        .fb-msg { font-size: 14px; color: #1c1e21; line-height: 1.4; }
+
+        .fb-reply-box { margin-left: 60px; margin-top: -10px; border-left: 2px solid #ddd; padding-left: 15px; margin-bottom: 20px; }
+
+        footer { text-align: center; padding: 60px 20px; font-size: 12px; color: #999; background: #fff; border-top: 1px solid #eee; }
+
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
+            .article-content { padding: 15px; }
+            h1.main-headline { font-size: 24px; }
+            .sub-text { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="health-header">
+    <div class="nav-container">
+        <div class="health-logo"><span>H</span>HEALTH REPORTS</div>
+        <div class="nav-links">
+            <span>Health</span><span>News</span><span>Research</span><span>Contact</span>
+        </div>
+    </div>
+</nav>
+
+<div class="top-alert">
+    ADVERTISEMENT: <span id="current-date"></span> — EXCLUSIVE FOR RESIDENTS OF <span class="loc-text">YOUR AREA</span>
+</div>
+
+<div class="wrapper">
+    <div class="article-content">
+        <h1 class="main-headline">1 TEASPOON IS ALL IT TAKES TO FORGET ABOUT ERECTILE DYSFUNCTION FOREVER</h1>
+        
+        <p class="sub-text">
+            A weak erection can be a sign of prostate cancer. Use the natural herbal remedy presented by Dr. Sandra Lee in an exclusive video to get rid of prostatitis once and for all. No doctors, chemicals, or side effects. Clinically tested. Watch it until the end while it's still available.
+        </p>
+
+        <div class="video-box">
+            <div id="vid_69d3cb663e851623f2f16800" style="position:relative;width:100%;padding: 56.25% 0 0;">
+                <img id="thumb_69d3cb663e851623f2f16800" src="img/poster.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <script type="text/javascript" id="scr_69d3cb663e851623f2f16800" src="https://scripts.converteai.net/258981a4-1a43-470a-8f6e-f19f227ea0ff/players/69d3cb663e851623f2f16800/player.js" async></script>
+        </div>
+
+        <div class="trust-badges-fixed">
+            <img src="img/trust.webp" alt="Trust Badges">
+        </div>
+
+        <div id="order-area">
+            <div style="background:#ffeb3b; padding:10px; font-weight:bold; margin-bottom:20px;">⚠️ LIMITED STOCK AVAILABLE IN <span class="loc-text">YOUR AREA</span></div>
+            <img src="img/Product.png" style="max-width:350px; width:100%; margin-bottom:25px;">
+            <br>
+            <a href="YOUR_LINK" class="cta-btn">CLAIM YOUR DISCOUNTED BOTTLE NOW</a>
+            <br><br>
+            <img src="img/guarantee.png" style="max-width:450px; width:100%; margin-top:15px;">
+        </div>
+
+        <div class="comment-wrap">
+            <div class="comment-title">2,485 Comments</div>
+
+            <div class="fb-item">
+                <img src="img/u1.jpg">
+                <div class="fb-bubble">
+                    <div class="fb-user">Robert Carlson</div>
+                    <div class="fb-msg">I've been using this simple trick for 2 weeks. The change is night and day. Dr. Sandra Lee is a lifesaver.</div>
+                </div>
+            </div>
+
+            <div class="fb-item">
+                <img src="img/u2.jpg">
+                <div class="fb-bubble">
+                    <div class="fb-user">Michael Thompson</div>
+                    <div class="fb-msg">Is the 6-bottle bundle still available with the discount? My doctor recommended this herbal ritual.</div>
+                </div>
+            </div>
+            
+            <div class="fb-reply-box">
+                <div class="fb-item">
+                    <img src="img/u3.jpg">
+                    <div class="fb-bubble">
+                        <div class="fb-user">Health Support Team</div>
+                        <div class="fb-msg">Yes Michael, as long as the video is still accessible, the exclusive discount remains active.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fb-item">
+                <img src="img/u4.jpg">
+                <div class="fb-bubble">
+                    <div class="fb-user">Steven Jenkins</div>
+                    <div class="fb-msg">Glad I watched this until the end. The explanation about the prostate was a real eye-opener.</div>
+                </div>
+            </div>
+
+            <div class="fb-item">
+                <img src="img/u5.jpg">
+                <div class="fb-bubble">
+                    <div class="fb-user">Jason M.</div>
+                    <div class="fb-msg">Shipping was very fast. Already started my first teaspoon this morning.</div>
+                </div>
+            </div>
+
+            </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Health Reports. All Rights Reserved.</p>
+    <p>Privacy Policy | Terms of Service | Contact Us</p>
+    <p style="margin-top:25px; opacity:0.6; padding: 0 20px;">
+        This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.<br>
+        *Statements on this website have not been evaluated by the Food and Drug Administration.
+    </p>
+</footer>
+
+<script>
+    // 1. 动态日期逻辑
+    const now = new Date();
+    const months = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+    document.getElementById("current-date").innerText = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+
+    // 2. 地理位置锁定
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            const locStr = (data.city && data.region) ? `${data.city}, ${data.region}` : "YOUR AREA";
+            document.querySelectorAll('.loc-text').forEach(el => el.innerText = locStr.toUpperCase());
+        });
+
+    // 3. Vturb 监听逻辑 (70% 自动弹出)
+    function showOrder() {
+        const area = document.getElementById('order-area');
+        if (area.style.display !== 'block') {
+            area.style.display = 'block';
+            area.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    window.addEventListener("message", function(e) {
+        if (e.data.type === "video_progress" && e.data.percent > 70) {
+            showOrder();
+        }
+    });
+
+    // 4. URL追踪透传
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('fbclid')) {
+        const link = document.querySelector('.cta-btn');
+        link.href += (link.href.includes('?') ? '&' : '?') + 'fbclid=' + urlParams.get('fbclid');
+    }
+</script>
+
+</body>
+</html>
